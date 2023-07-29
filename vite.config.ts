@@ -1,28 +1,25 @@
-import { defineConfig } from "vite";
+import { PluginOption, defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-
-import splitVendorChunkPlugin from "@vitejs/plugin-react";
-import { resolve } from "path";
+import { ViteAliases } from "vite-aliases";
+import WindiCSS from "vite-plugin-windicss";
+import { BlhxProxyConfig } from "./config/proxy.config";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()
-    // , splitVendorChunkPlugin()
-  ],
-  resolve:{
-    alias: {
-      "@": resolve(__dirname,'src'),
+export default defineConfig(({ command, mode }) => {
+  return {
+    server: {
+      host: "0.0.0.0",
+      port: 8000,
+      proxy: {
+        ...BlhxProxyConfig,
+      },
     },
-  },
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: `$injectedColor: orange;`,
-  //     },
-  //     // less: {
-  //     //   math: "parens-division",
-  //     // },
-  //   },
-  //   devSourcemap:true
-  // },
+    plugins: [
+      react(),
+      ViteAliases({
+        prefix: "@/",
+      }) as unknown as PluginOption[],
+      WindiCSS(),
+    ],
+  };
 });

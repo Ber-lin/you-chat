@@ -4,17 +4,13 @@ import NotFound from "@/pages/404";
 import Login from "@/pages/Login";
 import Home from "@/pages/Home";
 import ErrorBoundary from "@/components/ErrorBoundary";
-<<<<<<< HEAD
-import Chat from "@/pages/Chat";
-=======
 import { Chat } from "@/pages/Chat";
->>>>>>> 7e242fa (feat: add redux)
 
 export const routesArr: RouteObject[] = [
   {
     path: "/",
     element: <Home />,
-    children:[
+    children: [
       {
         path: "/chat",
         element: <Chat />,

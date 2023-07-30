@@ -3,7 +3,6 @@ import { UserList } from "./components/UserList"
 
 export const Chat: React.FC = () => {
     return (
-
         <div className="flex min-h-screen bg-gray-50 ">
             <div className="min-w-[10em] shadow">
                 <UserList />

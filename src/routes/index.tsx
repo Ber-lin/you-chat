@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { RouteObject, useRoutes } from "react-router-dom";
 import NotFound from "@/pages/404";
 import Login from "@/pages/Login";

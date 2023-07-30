@@ -1,16 +1,16 @@
-import React, { lazy, Suspense } from "react";
-import { Navigate, RouteObject, useRoutes } from "react-router-dom";
+import React, { Suspense } from "react";
+import { RouteObject, useRoutes } from "react-router-dom";
 import NotFound from "@/pages/404";
 import Login from "@/pages/Login";
 import Home from "@/pages/Home";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import Chat from "@/pages/Chat";
+import { Chat } from "@/pages/Chat";
 
 export const routesArr: RouteObject[] = [
   {
     path: "/",
     element: <Home />,
-    children:[
+    children: [
       {
         path: "/chat",
         element: <Chat />,
@@ -27,6 +27,25 @@ export const routesArr: RouteObject[] = [
   },
 ];
 export default function Route() {
+  const routesArr: RouteObject[] = [
+    {
+      path: "/",
+      element: <Home />,
+
+    },
+
+    {
+      path: "/login",
+      element: <Login />,
+    }, {
+      path: "/chat",
+      element: <Chat />
+    },
+    {
+      path: "*",
+      element: <NotFound />
+    }
+  ];
   const routes = useRoutes(routesArr);
   return (
     <ErrorBoundary

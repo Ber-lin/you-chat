@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navigator = () => {
+const Navigator: React.FC = () => {
     return (
         <div></div>
     )

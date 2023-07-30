@@ -44,6 +44,9 @@
       ],
       "@/Navigator/*": [
         "src/components/Navigator/*"
+      ],
+      "@/Chat/*": [
+        "src/pages/Chat/*"
       ]
     }
   },

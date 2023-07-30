@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "virtual:windi.css";
-import "./index.css";
+import "./index.less";
 import Route from "@/routes/index.tsx";
 import { BrowserRouter } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { RouteObject, useRoutes } from "react-router-dom";
 import NotFound from "@/pages/404";
 import Login from "@/pages/Login";
@@ -27,8 +27,6 @@ export const routesArr: RouteObject[] = [
   },
 ];
 export default function Route() {
-<<<<<<< HEAD
-=======
   const routesArr: RouteObject[] = [
     {
       path: "/",
@@ -48,7 +46,6 @@ export default function Route() {
       element: <NotFound />
     }
   ];
->>>>>>> 7e242fa (feat: add redux)
   const routes = useRoutes(routesArr);
   return (
     <ErrorBoundary

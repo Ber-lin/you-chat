@@ -38,6 +38,12 @@
       ],
       "@/routes/*": [
         "src/routes/*"
+      ],
+      "@/Navigation/*": [
+        "src/components/Navigator/*"
+      ],
+      "@/Navigator/*": [
+        "src/components/Navigator/*"
       ]
     }
   },

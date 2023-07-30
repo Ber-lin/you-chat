@@ -1,3 +1,5 @@
+import React from "react";
+
 const Navigator = () => {
     return (
         <div></div>

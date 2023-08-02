@@ -39,14 +39,11 @@
       "@/routes/*": [
         "src/routes/*"
       ],
-      "@/Navigation/*": [
-        "src/components/Navigator/*"
+      "@/store/*": [
+        "src/store/*"
       ],
-      "@/Navigator/*": [
-        "src/components/Navigator/*"
-      ],
-      "@/Chat/*": [
-        "src/pages/Chat/*"
+      "@/Message/*": [
+        "src/components/Message/*"
       ]
     }
   },

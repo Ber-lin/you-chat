@@ -4,11 +4,11 @@ import "virtual:windi.css";
 import "./index.less";
 import Route from "@/routes/index.tsx";
 import { BrowserRouter } from "react-router-dom";
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
+      <BrowserRouter>
       <Route />
     </BrowserRouter>
+    
   </React.StrictMode>
 );

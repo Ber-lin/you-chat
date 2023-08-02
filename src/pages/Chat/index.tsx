@@ -1,6 +1,8 @@
 import React from "react"
-import { UserList } from "./components/UserList"
-import { io } from "socket.io-client/debug"
+import { UserList } from "./components/userList/UserList"
+import { io } from "socket.io-client"
+import './index.less'
+import Room from "./components/room/Room"
 
 export const Chat: React.FC = () => {
     const cl = console.log;
@@ -11,23 +13,18 @@ export const Chat: React.FC = () => {
         transports: ["websocket"],
     });
 
-    socket.on('test', cl)
+    socket.on('sendMsg', cl)
 
     const send = () => {
         socket.emit('hello', { data: "nihao" }, console.log)
     }
-
+    
     return (
-        <div className="flex min-h-screen bg-gray-50 ">
+        <div className="flex h-full bg-white ">
             <div className="min-w-[10em] shadow">
                 <UserList />
             </div>
-            <div className="flex-1 flex flex-col p-4">
-                <div className="flex-1">
-                    <button className="border rounded p-2" onClick={send}>Click</button>
-                </div>
-                <div className="min-h-[12em] border-t"></div>
-            </div>
+            <Room/>
         </div>
     )
 }

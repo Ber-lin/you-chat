@@ -27,25 +27,7 @@ export const routesArr: RouteObject[] = [
   },
 ];
 export default function Route() {
-  const routesArr: RouteObject[] = [
-    {
-      path: "/",
-      element: <Home />,
-
-    },
-
-    {
-      path: "/login",
-      element: <Login />,
-    }, {
-      path: "/chat",
-      element: <Chat />
-    },
-    {
-      path: "*",
-      element: <NotFound />
-    }
-  ];
+  
   const routes = useRoutes(routesArr);
   return (
     <ErrorBoundary

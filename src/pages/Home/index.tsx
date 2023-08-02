@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Breadcrumb, Layout, Menu, MenuProps, theme } from "antd";
 import { MailOutlined } from "@ant-design/icons";
 import "./index.less";
 import { Outlet, useNavigate } from "react-router-dom";
 import { routesArr } from "@/routes/index";
+import Login from "../Login";
 
 const { Header, Content, Footer } = Layout;
 
@@ -37,6 +38,9 @@ const items: MenuProps["items"] = [
 ];
 
 const Home: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+
   const navigate = useNavigate();
   const {
     token: { colorBgContainer },
@@ -46,51 +50,53 @@ const Home: React.FC = () => {
     navigate(key);
   };
   return (
-    <Layout className="layout">
-      <Header style={{ display: "flex", alignItems: "center" }}>
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items}
-          onClick={onClick}
-        />
-      </Header>
-      <Content style={{ padding: "0 50px" }}>
-        <Breadcrumb
-          style={{ margin: "16px 0" }}
-          items={[
-            {
-              title: "Home",
-            },
-            {
-              title: <a href="">Application Center</a>,
-            },
-            {
-              title: <a href="">Application List</a>,
-            },
-            {
-              title: "An Application",
-            },
-          ]}
-        ></Breadcrumb>
-        <div
-          className="site-layout-content"
-          style={{
-            background: colorBgContainer,
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-          }}
-        >
-          <Outlet></Outlet>
-        </div>
-      </Content>
-      <Footer style={{ textAlign: "center" }}>
-        You-Chat ©2023 Created by 伏翎
-      </Footer>
-    </Layout>
+    <>
+      <Layout className="layout">
+        <Header style={{ display: "flex", alignItems: "center" }}>
+          <div className="demo-logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={["2"]}
+            items={items}
+            onClick={onClick}
+          />
+          <span className="text-light-50" onClick={()=>setIsModalOpen(true)}>登录</span>
+        </Header>
+        <Content style={{ padding: "0 50px" }}>
+          <Breadcrumb
+            style={{ margin: "16px 0" }}
+            items={[
+              {
+                title: "Home",
+              },
+              {
+                title: <a href="">Application Center</a>,
+              },
+              {
+                title: <a href="">Application List</a>,
+              },
+              {
+                title: "An Application",
+              },
+            ]}
+          ></Breadcrumb>
+          <div
+            className="site-layout-content"
+            style={{
+              background: "#e5e7eb",
+              margin: "24px 16px",
+              padding: 12,
+              height: "80vh",
+              borderRadius: "8px",
+            }}
+          >
+            <Outlet></Outlet>
+          </div>
+        </Content>
+      </Layout>
+      <Login isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+    </>
   );
 };
 

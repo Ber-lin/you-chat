@@ -44,6 +44,9 @@
       ],
       "@/Message/*": [
         "src/components/Message/*"
+      ],
+      "@/Profile/*": [
+        "src/pages/Profile/*"
       ]
     }
   },

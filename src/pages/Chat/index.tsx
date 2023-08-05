@@ -18,13 +18,15 @@ export const Chat: React.FC = () => {
     const send = () => {
         socket.emit('hello', { data: "nihao" }, console.log)
     }
-    
+
     return (
-        <div className="flex h-full bg-white ">
-            <div className="min-w-[10em] shadow">
-                <UserList />
+        <div className="p-1 h-full">
+            <div className="bg-white flex h-full w-full rounded">
+                <div className="min-w-[10em] shadow ">
+                    <UserList />
+                </div>
+                <Room />
             </div>
-            <Room/>
         </div>
     )
 }

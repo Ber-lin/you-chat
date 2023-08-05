@@ -5,6 +5,7 @@ import Login from "@/pages/Login";
 import Home from "@/pages/Home";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Chat } from "@/pages/Chat";
+import Profile from "../pages/Profile";
 
 export const routesArr: RouteObject[] = [
   {
@@ -14,6 +15,10 @@ export const routesArr: RouteObject[] = [
       {
         path: "/chat",
         element: <Chat />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />
       },
     ]
   },
@@ -27,7 +32,7 @@ export const routesArr: RouteObject[] = [
   },
 ];
 export default function Route() {
-  
+
   const routes = useRoutes(routesArr);
   return (
     <ErrorBoundary

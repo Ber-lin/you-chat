@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Breadcrumb, Layout, Menu, MenuProps, theme } from "antd";
-import { MailOutlined } from "@ant-design/icons";
+import { MailOutlined, ProfileOutlined } from "@ant-design/icons";
 import "./index.less";
 import { Outlet, useNavigate } from "react-router-dom";
 import { routesArr } from "@/routes/index";
@@ -26,15 +26,9 @@ function getItem(
 }
 
 const items: MenuProps["items"] = [
-  getItem("Navigation One", "/", <MailOutlined />),
-
-  getItem("chat", "/chat", <MailOutlined />),
-
-  { type: "divider" },
-
-  getItem("login", "/login", <MailOutlined />),
-
-  getItem("no", "/sub4", <MailOutlined />),
+  getItem("首页", "/", <MailOutlined />),
+  getItem("聊天", "/chat", <MailOutlined />),
+  getItem("个人信息", "/profile", <ProfileOutlined />),
 ];
 
 const Home: React.FC = () => {
@@ -57,11 +51,11 @@ const Home: React.FC = () => {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={["2"]}
+            defaultSelectedKeys={["/chat"]}
             items={items}
             onClick={onClick}
           />
-          <span className="text-light-50" onClick={()=>setIsModalOpen(true)}>登录</span>
+          <span className="text-light-50" onClick={() => setIsModalOpen(true)}>登录</span>
         </Header>
         <Content style={{ padding: "0 50px" }}>
           <Breadcrumb
@@ -83,13 +77,6 @@ const Home: React.FC = () => {
           ></Breadcrumb>
           <div
             className="site-layout-content"
-            style={{
-              background: "#e5e7eb",
-              margin: "24px 16px",
-              padding: 12,
-              height: "80vh",
-              borderRadius: "8px",
-            }}
           >
             <Outlet></Outlet>
           </div>

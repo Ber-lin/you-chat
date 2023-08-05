@@ -1,20 +1,30 @@
-export const BlhxProxyConfig = {
-  "/blhx-api": {
-    target: "http://192.168.0.100:3000",
+import { log } from "console";
+import { ProxyOptions } from "vite";
+
+const globalTarget = "http://localhost:3000";
+const globalPrefix = "/v1";
+
+const useProxyFactory = (
+  name = "/api",
+  target = "",
+  prefix = "",
+  replace = true
+) => {
+  return {
+    target: `${target}${prefix}`,
     rewrite: (path: string) => {
-      const p = path.replace("/blhx-api", "");
-      console.log(`${path} => http://192.168.0.100${p}`);
-      return p;
+      const res = path.replace(replace ? name : "", "");
+      log(`${path} => ${target}${prefix}${res}`);
+      return res;
     },
-  },
+  };
 };
-export const BaseProxyConfig = {
-  "/api1": {
-    target: "http://192.168.0.100:3000",
-    rewrite: (path: string) => {
-      const p = path.replace("/api1", "");
-      console.log(`${path} => http://192.168.0.100${p}`);
-      return p;
-    },
-  },
+
+const proxyConfig: Record<string, string | ProxyOptions> = {
+  "/api-v1": useProxyFactory("/api-v1", globalTarget, globalPrefix, true),
+  "/userAvatar": useProxyFactory("/userAvatar", globalTarget, "", false),
 };
+
+log(proxyConfig);
+log("Proxy 配置成功");
+export { proxyConfig };

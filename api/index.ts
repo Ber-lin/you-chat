@@ -8,7 +8,7 @@ export const bapi = new Axios({
 
 const api = new Axios({
   timeout: 15000,
-  baseURL: "/api1/v1",
+  baseURL: "/api-v1",
   headers: {
     "Content-Type": "application/json",
   },

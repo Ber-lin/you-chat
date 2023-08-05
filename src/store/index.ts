@@ -93,11 +93,13 @@ export interface IMessagePrivateRelation {
 interface IPerson {
   user: Partial<IUser>;
   chatList: Partial<IUser>[];
+  token: string;
+  setToken: (token: string) => void;
   setUser: (user: Partial<IUser>) => void;
-  setLinkMan:(chatList: Partial<IUser>[]) =>void
+  setLinkMan: (chatList: Partial<IUser>[]) => void;
 }
 
-let userStore=(set:any) => ({
+let userStore = (set: any) => ({
   user: {
     uid: "",
     email: "",
@@ -106,6 +108,7 @@ let userStore=(set:any) => ({
     avatar: "",
     slogan: "",
   },
+  token: "",
   chatList: [],
   setUser: (user: Partial<IUser>) => {
     set(() => ({ user }));
@@ -116,6 +119,9 @@ let userStore=(set:any) => ({
       linkMan: [...state.chatList, ...chatList],
     }));
   },
-})
-let store=persist(userStore ,{name:'user'})
-export const usePersonStore = create(store)
+  setToken: (token: string) => {
+    set((state: IPerson) => ({ ...state, token }));
+  },
+});
+let store = persist(userStore, { name: "user" });
+export const usePersonStore = create(store);

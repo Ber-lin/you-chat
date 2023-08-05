@@ -49,7 +49,7 @@ export default function Room() {
     <div className="flex-1 flex flex-col p-4">
       <div className="flex-1">
         {
-          messageList.map(message=>(
+          messageList.map(message => (
             <div className="flex">
               <div className="avatar">
                 <img src={message.user.avatar} />

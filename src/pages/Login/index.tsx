@@ -14,26 +14,26 @@ function Login({
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [isLogin, setIsLogin] = useState(true);
-  const {setUser}=usePersonStore()
+  const { setUser, setToken } = usePersonStore()
   const handleOk = () => {
     setIsModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const onFinish = async(form: any) => {
+  const onFinish = async (form: any) => {
     console.log(form);
     let res
-    if(isLogin){
-       res=await api.post('/login',form)
-       
-    }else{
-       api.post('/registe',form).then(res=>{
-        setUser({email:res.data.email});
-       })
-      
+    if (isLogin) {
+      res = await api.post('/login', form)
+      setToken(res.data.token)
+    } else {
+      api.post('/registe', form).then(res => {
+        setUser({ email: res.data.email });
+      })
+
     }
-    
+
     // console.log(res.data);
   };
   const onFinishFailed = (err: any) => {

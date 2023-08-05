@@ -53,6 +53,9 @@
       ],
       "@/ApiContext/*": [
         "src/context/ApiContext/*"
+      ],
+      "@/types/*": [
+        "src/types/*"
       ]
     }
   },

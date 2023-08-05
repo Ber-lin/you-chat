@@ -14,7 +14,7 @@ const useProxyFactory = (
     target: `${target}${prefix}`,
     rewrite: (path: string) => {
       const res = path.replace(replace ? name : "", "");
-      log(`${path} => ${target}${prefix}${res}`);
+      log(`http: ${path} => ${target}${prefix}${res}`);
       return res;
     },
   };
@@ -23,6 +23,7 @@ const useProxyFactory = (
 const proxyConfig: Record<string, string | ProxyOptions> = {
   "/api-v1": useProxyFactory("/api-v1", globalTarget, globalPrefix, true),
   "/userAvatar": useProxyFactory("/userAvatar", globalTarget, "", false),
+  "/userHeader": useProxyFactory("/userHeader", globalTarget, "", false),
 };
 
 log(proxyConfig);

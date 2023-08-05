@@ -8,6 +8,7 @@ export interface IUser {
   salt: string;
   password: string;
   avatar: string;
+  header: string;
   slogan?: string;
   birthday?: Date;
   age?: number;

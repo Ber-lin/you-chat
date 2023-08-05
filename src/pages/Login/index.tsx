@@ -26,7 +26,7 @@ function Login({
     let res
     if (isLogin) {
       res = await api.post('/login', form)
-      setToken(res.data.token)
+      setToken("Bearer " + res.data.token)
     } else {
       api.post('/registe', form).then(res => {
         setUser({ email: res.data.email });

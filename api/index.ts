@@ -15,7 +15,14 @@ const api = new Axios({
 });
 
 api.interceptors.request.use((req) => {
-  req.data = JSON.stringify(req.data);
+  const type = Object.prototype.toString
+    .call(req.data)
+    .slice(8, -1)
+    .toLowerCase();
+  if (type !== "formdata") {
+    req.headers["Content-Type"] = "application/json";
+    req.data = JSON.stringify(req.data);
+  }
   return req;
 });
 api.interceptors.response.use((res) => {

@@ -29,7 +29,7 @@ export default ({ url }: IProps) => {
                 in={isHoverHeader}
                 mountOnEnter
                 timeout={200}
-                classNames={"alert"}
+                classNames={"hover"}
             >
                 <div className="absolute inset-0" ref={targetRef}>
                     <div className="absolute inset-0 bg-white opacity-70"></div>
